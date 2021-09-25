@@ -6,7 +6,7 @@ name: build
 on:
   push:
     branches:
-      - 'main'
+      - '*'
   pull_request:
     branches:
       - '*'         # matches every branch that doesn't contain a '/'
@@ -46,5 +46,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: v14.3.0.m1
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
