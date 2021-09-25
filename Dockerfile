@@ -2,7 +2,7 @@ FROM registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ee:v14.3.0
 
 COPY --chown=git license_key.pub /srv/gitlab/.license_encryption_key.pub
 
-RUN sed -i -r 's/restricted_attr(:plan).presence\ \|\|\ STARTER_PLAN/restricted_attr(:plan).presence\ \|\|\ ULTIMATE_PLAN/g' /srv/gitlab/ee/app/models/license.rb \
+RUN sed -i -r 's/presence\ \|\|\ STARTER_PLAN/presence\ \|\|\ ULTIMATE_PLAN/g' /srv/gitlab/ee/app/models/license.rb \
 && grep '.presence' /srv/gitlab/ee/app/models/license.rb
 
 CMD /scripts/process-wrapper
