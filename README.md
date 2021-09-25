@@ -1,1 +1,1 @@
-# dear-gitlab-workhorse-ee
+# dear-gitlab-webservice-ee
