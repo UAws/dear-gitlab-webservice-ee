@@ -47,4 +47,4 @@ jobs:
           context: .
           push: true
           tags: v14.3.0.m1
-          labels: v14.3.0.m1
+          labels: ${{ steps.meta.outputs.labels }}
