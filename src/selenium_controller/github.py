@@ -49,6 +49,11 @@ class Github:
                     line = 'FROM registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ee:v{}'.format(tag)
                 print(line)
 
-        execute_now(f'git commit -m add {tag}')
-        execute_now('git push origin v{tag}.m1'.format(tag=tag))
+        execute_now(f'git add ../Dockerfile')
+        execute_now(f'git commit -m add_{tag}')
+        execute_now(f'git remote set-url origin https://$GITHUB_TOKEN@github.com/UAws/dear-gitlab-webservice-ee.git')
+        out, err, status = execute_now('git push --set-upstream origin v{tag}.m1'.format(tag=tag))
+
+        if status != 0:
+            exit(status)
 
