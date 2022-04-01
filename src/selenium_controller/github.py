@@ -40,7 +40,7 @@ class Github:
 
     def create_new_branch(self, tag):
 
-        execute_now('git checkout -b v{tag}.m1 main'.format(tag=tag))
+        execute_now('git checkout -b v{tag}.m1'.format(tag=tag))
 
         with FileInput(files=find('Dockerfile', '../../'), inplace=True) as f:
             for line in f:

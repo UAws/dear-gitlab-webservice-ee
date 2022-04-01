@@ -13,10 +13,10 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  GITHUB_TOKEN : ${{ secrets.GITHUB_TOKEN }}
+  GITHUB_TOKEN : ${{ secrets.BOT_TOKEN }}
 
 jobs:
-  build-and-push-image:
+   daily_update:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -27,8 +27,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: run matcher
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           cd src
           pip install -r requirements.txt
           python main.py
+          
           
