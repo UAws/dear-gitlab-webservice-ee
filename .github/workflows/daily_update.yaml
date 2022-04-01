@@ -1,5 +1,5 @@
 # Name your workflow
-name: build
+name: daily_update
 
 # Set on which events you want run the actions.
 # In this case the workflow will run on push for master and on pull request for master and develop branches
@@ -31,3 +31,4 @@ jobs:
           cd src
           pip install -r requirements.txt
           python main.py
+          

@@ -1,5 +1,6 @@
 from selenium_controller.github import Github
 from selenium_controller.gitlab import Gitlab
+from utils.shell_executor.executor import execute_now
 
 
 def main():
@@ -7,6 +8,8 @@ def main():
     gitlab = Gitlab()
 
     new_tags = list()
+
+    execute_now('git fetch --all')
 
     gitlab_versions = gitlab.fetch_gitlab_map_versions()
     github_tags = github.fetch_github_available_docker_versions()
