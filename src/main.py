@@ -18,7 +18,7 @@ def main():
 
     # match the gitlab version which not inside GitHub tags, the github tags contains gitlab version
     for gitlab_version in gitlab_versions:
-        if gitlab_version not in github_tags:
+        if gitlab_version not in github_tags and int(gitlab_version.split('.')[0]) > 12:
             new_tags.append(gitlab_version)
 
     for tag in new_tags:

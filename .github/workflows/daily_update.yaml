@@ -13,10 +13,10 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  GITHUB_TOKEN : ${{ secrets.BOT_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
 
 jobs:
-   daily_update:
+  daily_update:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -25,6 +25,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          token: ${{ secrets.BOT_TOKEN }}
 
       - name: run matcher
         env:
@@ -32,6 +35,11 @@ jobs:
         run: |
           cd src
           pip install -r requirements.txt
+          git config --local user.email "41593290+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           python main.py
-          
+
+      - name: Setup tmate session
+        if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
           

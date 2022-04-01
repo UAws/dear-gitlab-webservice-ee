@@ -29,7 +29,7 @@ class Test(TestCase):
 
         self.github.fetch_github_available_docker_versions()
 
-        print(self.github.packages)
+        # print(self.github.packages)
 
         tags_list = list()
 
@@ -41,6 +41,7 @@ class Test(TestCase):
                 tags_list.append(tag[0])
 
         print(tags_list)
+        print(len(tags_list))
 
     def test_find(self):
         print(find('Dockerfile', '../../../'))
@@ -58,7 +59,7 @@ class Test(TestCase):
 
         # match the gitlab version which not inside GitHub tags, the github tags contains gitlab version
         for gitlab_version in gitlab_versions:
-            if gitlab_version not in github_tags:
+            if gitlab_version not in github_tags and int(gitlab_version.split('.')[0]) > 12:
                 new_tags.append(gitlab_version)
 
         print(new_tags)
