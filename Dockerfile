@@ -1,4 +1,4 @@
-FROM registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ee:v11.9.0
+FROM registry.gitlab.com/gitlab-org/build/cng/gitlab-webservice-ee:v11.8.3
 
 
 COPY --chown=git license_key.pub /srv/gitlab/.license_encryption_key.pub
