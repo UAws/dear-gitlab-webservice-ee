@@ -8,5 +8,5 @@ pyjwt[crypto]==2.3.0
 webdriver-manager==3.5.3
 dataclasses~=0.6
 selenium~=4.0.0
-selenium-wire~=4.6.1
+selenium-wire~=5.0.0
 ghapi~=0.1.0
