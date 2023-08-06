@@ -5,7 +5,7 @@ python-dotenv==0.19.2
 pytz==2021.3
 requests==2.27.1
 pyjwt[crypto]==2.3.0
-webdriver-manager==3.5.3
+webdriver-manager==4.0.0
 dataclasses~=0.6
 selenium~=4.0.0
 selenium-wire==5.0.0
